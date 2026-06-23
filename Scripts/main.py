@@ -26,25 +26,36 @@ def convertir_hora(col):
 
 
 #Rutas archivos de huelleros
-shutil.copy(config.r_caseta, "temp/temp_caseta.xlsx")
-shutil.copy(config.r_admin, "temp/temp_admin.xlsx")
-shutil.copy(config.r_dit, "temp/temp_dit.xlsx")
+#Rutas archivos de huelleros
+r_caseta = config.r_caseta()
+r_admin = config.r_admin()
+r_dit = config.r_dit()
 
-df_CASETA = pd.read_excel("temp/temp_caseta.xlsx", usecols= "A,B")
-df_ADMIN = pd.read_excel("temp/temp_admin.xlsx", usecols= "A,B")
-df_DIT = pd.read_excel("temp/temp_dit.xlsx", usecols= "A,B")
+# preparar rutas temporales para copiar los archivos de huelleros
+temp_caseta = os.path.join("temp", "temp_" + os.path.basename(r_caseta))
+temp_admin = os.path.join("temp", "temp_" + os.path.basename(r_admin))
+temp_dit = os.path.join("temp", "temp_" + os.path.basename(r_dit))
 
-os.remove("temp/temp_caseta.xlsx")
-os.remove("temp/temp_admin.xlsx")
-os.remove("temp/temp_dit.xlsx")
+shutil.copy(r_caseta, temp_caseta)
+shutil.copy(r_admin, temp_admin)
+shutil.copy(r_dit, temp_dit)
+df_CASETA = pd.read_excel(temp_caseta)
+df_ADMIN = pd.read_excel(temp_admin)
+df_DIT = pd.read_excel(temp_dit)
+print(f"cabecera caseta: {df_CASETA.head()}")
+print(f"cabecera admin: {df_ADMIN.head()}")
+print(f"cabecera dit: {df_DIT.head()}")
+os.remove(temp_caseta)
+os.remove(temp_admin)
+os.remove(temp_dit)
 
 df_CASETA["HUELLERO"] = "H_CASETA_1" 
 df_ADMIN["HUELLERO"] = "H_ADMIN"
 df_DIT["HUELLERO"] = "H_DIT"
 
 #fecha de ultimo procesamiento de los archivos
-if os.path.exists("ultimo_proceso.txt"):
-    with open("ultimo_proceso.txt") as f:
+if os.path.exists(config.ultimo_proceso):
+    with open(config.ultimo_proceso) as f:
         ult_proceso = datetime.strptime(f.readline(), "%Y-%m-%d %H:%M:%S")
 else:
     ult_proceso = datetime.now()
