@@ -3,17 +3,23 @@ Proyecto de automatización de reportes de asistencia laboral
 
 ## Empaquetamiento
 Actualmente el proyecto está diseñado para ser ejecutado como un achivo .exe. Para empaquetarlo siga los siguientes pasos:
+
 ### Paso 1
 Instale Oracle instrant client (version 19.30)
----
+
+
 ### Paso 2
 Mueva la carpeta dentro de la carpeta raíz del proyecto
----
+
+
 ### Paso 3
 ejecute el siguiente comando en la carpeta raíz del proyecto:
-		|pyinstaller --onefile --noconsole --add-binary "instantclient_19_30;instantclient" --hidden-import getpass --name BiometricosApp main.py
+```
+pyinstaller --onefile --noconsole --add-binary "instantclient_19_30;instantclient" --hidden-import getpass --name BiometricosApp main.py
+```
 Esto debe crear un archivo .exe en una carpeta llamada dist/ dentro del proyecto
----
+
+
 
 ##  Arquitectura del flujo
 
