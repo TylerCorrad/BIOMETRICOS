@@ -1,0 +1,11 @@
+config.json
+__pycache__/
+temp/
+app.log
+.venv/
+secret.key
+*.pyc
+dist/
+build/
+biometricosApp.spec
+instantclient_19_30/
