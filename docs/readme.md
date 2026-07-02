@@ -9,7 +9,7 @@ Instale Oracle instrant client (version 19.30)
 
 
 ### Paso 2
-Mueva la carpeta dentro de la carpeta raíz del proyecto
+Mueva la carpeta de Oracle Instant Client dentro de la carpeta raíz del proyecto (asegurese de que la carpeta se llame *"instantclient_19_30"*)
 
 
 ### Paso 3
