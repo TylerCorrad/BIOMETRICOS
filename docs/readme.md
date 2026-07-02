@@ -1,6 +1,6 @@
 # BIOMETRICOS
 Este sistema tiene como objetivo la optimización del proceso de generación de reportes sobre la asistencia laboral. Específicamente se busca la reducción de tiempos de procesamiento de la información, la reducción de errores humanos resultantes del procesamiento manual y la integración fluida de múltiples fuentes de datos (archivos de Excel y base de datos Oracle). 
-
+---
 ## Empaquetamiento
 Actualmente el proyecto está diseñado para ser ejecutado como un achivo .exe. Para empaquetarlo siga los siguientes pasos:
 
@@ -18,7 +18,7 @@ ejecute el siguiente comando en la carpeta raíz del proyecto:
 pyinstaller --onefile --noconsole --add-binary "instantclient_19_30;instantclient" --hidden-import getpass --name BiometricosApp main.py
 ```
 Esto debe crear un archivo .exe en una carpeta llamada dist/ dentro del proyecto
-
+---
 
 
 ##  Arquitectura del flujo
@@ -32,7 +32,6 @@ C --> E[reporte final con tablas dinámicas]
 ```
 ## Tecnoligías usadas
 ### python v 3.x
----
 **librerias:**
 - pandas 
 - openpyxl
@@ -40,12 +39,10 @@ C --> E[reporte final con tablas dinámicas]
 - XlsxWriter
 - tkcalendar 
 ### Oracle Instant Client v.19.30
----
 El proyecto ya tiene incluida la carpeta con Oracle Instant Client
-
+---
 
 ## Estructura del proyecto
----
 	/BIOMETRICOS
 		|-app/ 			-UI y controlador
 		|	|ui.py					-Interfaz de usuario
@@ -68,7 +65,6 @@ El proyecto ya tiene incluida la carpeta con Oracle Instant Client
 		|requirements.txt			-dependencias de python a instalar
 
 ## Consideraciones de seguridad
----
 El proyecto generará dos archivos: **config.json** y **secret.key**.
 **Config.json** guardará los datos de la conexión a la base de datos Oracle, encriptando la contraseña del usuario con la llave ubicada en **secret.key**. Estos archivos se generarán solos en la primera ejecución, y si los elimina volveran a generarse la proxima vez que ejecute el programa.
 Para proteger estos datos sensibles, tenga en cuenta las siguientes consideraciones:
