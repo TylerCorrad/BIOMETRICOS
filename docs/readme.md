@@ -1,5 +1,5 @@
 # BIOMETRICOS
-Proyecto de automatización de reportes de asistencia laboral
+Este sistema tiene como objetivo la optimización del proceso de generación de reportes sobre la asistencia laboral. Específicamente se busca la reducción de tiempos de procesamiento de la información, la reducción de errores humanos resultantes del procesamiento manual y la integración fluida de múltiples fuentes de datos (archivos de Excel y base de datos Oracle). 
 
 ## Empaquetamiento
 Actualmente el proyecto está diseñado para ser ejecutado como un achivo .exe. Para empaquetarlo siga los siguientes pasos:
@@ -43,8 +43,9 @@ C --> E[reporte final con tablas dinámicas]
 ---
 El proyecto ya tiene incluida la carpeta con Oracle Instant Client
 
----
+
 ## Estructura del proyecto
+---
 	/BIOMETRICOS
 		|-app/ 			-UI y controlador
 		|	|ui.py					-Interfaz de usuario
@@ -66,3 +67,13 @@ El proyecto ya tiene incluida la carpeta con Oracle Instant Client
 		|main.py					-flujo principal del sistema
 		|requirements.txt			-dependencias de python a instalar
 
+## Consideraciones de seguridad
+---
+El proyecto generará dos archivos: **config.json** y **secret.key**.
+**Config.json** guardará los datos de la conexión a la base de datos Oracle, encriptando la contraseña del usuario con la llave ubicada en **secret.key**. Estos archivos se generarán solos en la primera ejecución, y si los elimina volveran a generarse la proxima vez que ejecute el programa.
+Para proteger estos datos sensibles, tenga en cuenta las siguientes consideraciones:
+
+- No compartir los archivos config.json ni secret.key. 
+- No subir estos archivos a repositorios públicos, servicios de almacenamiento compartido o canales no autorizados. 
+- Mantener las credenciales actualizadas y cambiarlas periódicamente según las políticas de seguridad institucionales. 
+- Limitar el acceso al equipo donde se ejecuta la aplicación únicamente a personal autorizado. 
